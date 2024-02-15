@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sobre de Amor</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  body {
+    background-color: #ffc0cb; /* Color de fondo rosa */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .estrella {
+    background: url('estrella.png') no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    width: 50px; /* Ajusta esto al tamaño de tu imagen de estrella */
+    height: 50px; /* Ajusta esto al tamaño de tu imagen de estrella */
+  }
+  /* Posiciona las estrellas en diferentes partes de la pantalla */
+  .estrella1 { top: 10%; left: 10%; }
+  .estrella2 { top: 15%; right: 30%; }
+  .estrella3 { top: 70%; left: 25%; }
+  .estrella4 { bottom: 20%; right: 20%; }
+  .estrella5 { bottom: 10%; left: 40%; }
+  /* ...añade más si necesitas */
+
+  #contenedor {
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    transform: translate(5%, 5%);
+  }
+  #sobre {
+    width: 300px; /* Ajusta esto al tamaño de tu imagen */
+    height: 300px; /* Ajusta esto al tamaño de tu imagen */
+    background: url('Amor.jpg') no-repeat center center;
+    background-size: cover;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  }
+  #mensaje {
+    display: none;
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    font-size: 3em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+</style>
+</head>
+<body>
+
+<!-- Estrellas -->
+<div class="estrella estrella1"></div>
+<div class="estrella estrella2"></div>
+<div class="estrella estrella3"></div>
+<div class="estrella estrella4"></div>
+<div class="estrella estrella5"></div>
+<!-- ...añade más divs de estrella si necesitas -->
+
+<div id="contenedor" onclick="abrirSobre()">
+  <div id="sobre"></div>
+  <div id="mensaje">Te amo</div>
+</div>
+
+<script>
+function abrirSobre() {
+  var mensaje = document.getElementById('mensaje');
+  var sobre = document.getElementById('sobre');
+  
+  // Oculta el sobre
+  sobre.style.transform = 'translateY(-100vh)';
+  sobre.style.opacity = '0';
+
+  // Muestra el mensaje después de que el sobre se haya "ido"
+  setTimeout(function() {
+    mensaje.style.display = 'block';
+    mensaje.style.opacity = '1';
+  }, 1000); // Este tiempo debe coincidir con la duración de la transición del sobre
+}
+</script>
+
+</body>
+</html>
